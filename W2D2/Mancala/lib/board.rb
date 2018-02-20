@@ -33,15 +33,15 @@ class Board
       idx += 1
       idx = 0 if idx > 13
       if idx == 6
-        cups[6] << stones.pop if current_player_name == player1
+        cups[idx] << stones.pop if current_player_name == player1
       elsif idx == 13
-        cups[13] << stones.pop if current_player_name == player2
+        cups[idx] << stones.pop if current_player_name == player2
       else
         cups[idx] << stones.pop
       end
     end
-    next_turn(idx)
     render
+    next_turn(idx)
   end
 
   def next_turn(ending_cup_idx)
