@@ -9,6 +9,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
+require 'bcrypt'
 
 class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
@@ -44,7 +45,7 @@ class User < ApplicationRecord
     self.password_digest = BCrypt::Password.create(password)
   end
 
-  def is_password?(pw)
+  def is_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
