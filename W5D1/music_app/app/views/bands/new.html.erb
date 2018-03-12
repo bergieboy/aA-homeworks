@@ -1,0 +1,16 @@
+<h2>add artist to library</h2>
+
+<form class="" action="<%= bands_url %>" method="post">
+  <%= auth_token %>
+
+  <p>
+    <label>artist name:
+      <input type="text" name="band[name]">
+    </label>
+  </p>
+
+  <br>
+  <br>
+  <input type="submit" value="add artist">
+
+</form>

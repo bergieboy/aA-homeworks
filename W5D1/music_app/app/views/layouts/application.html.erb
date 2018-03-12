@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sound</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <link href="https://fonts.googleapis.com/css?family=Monoton|Raleway" rel="stylesheet">
+  </head>
+
+  <body>
+
+  <header>
+    <h1>Sound</h1>
+
+    <section>
+      <% if logged_in? %>
+        <p>logged in as: <%= current_user.email %></p>
+        <form action="<%= session_url %>" method="post">
+          <%= auth_token %>
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="logout">
+        </form>
+      <% else %>
+        <p><a href="<%= new_session_url %>">sign in</a></p>
+
+        <p><a href="<%= new_user_url %>">create profile</a></p>
+      <% end %>
+    </section>
+  </header>
+
+    <%= yield %>
+  </body>
+</html>

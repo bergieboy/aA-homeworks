@@ -1,0 +1,11 @@
+<h2>Artists</h2>
+
+<section>
+  <% @bands.each do |band| %>
+  <p><%=band.name%></p>
+  <form action="<%=bands_url(band)%>" method="post">
+    <%= auth_token %>
+    <input type="submit" name="" value="edit artist">
+  </form>
+  <% end %>
+</section>
