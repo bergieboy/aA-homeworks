@@ -22317,6 +22317,20 @@ exports.default = Currency;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var selectCurrency = function selectCurrency(baseCurrency, rates) {
+  return {
+    type: "SWITCH_CURRENCY",
+    baseCurrency: baseCurrency,
+    rates: rates
+  };
+};
+
+exports.default = selectCurrency;
+
 /***/ }),
 /* 187 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -22324,15 +22338,21 @@ exports.default = Currency;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _redux = __webpack_require__(194);
 
-var _redux2 = _interopRequireDefault(_redux);
-
-var _reducer = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"frontend/reducer.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+var _reducer = __webpack_require__(209);
 
 var _reducer2 = _interopRequireDefault(_reducer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var store = (0, _redux.createStore)(_reducer2.default);
+
+exports.default = store;
 
 /***/ }),
 /* 188 */
@@ -23364,6 +23384,35 @@ function applyMiddleware() {
     };
   };
 }
+
+/***/ }),
+/* 209 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var initialState = { baseCurrency: "Please select", rates: {} };
+
+var reducer = function reducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case "SWITCH_CURRENCY":
+      return {
+        baseCurrency: action.baseCurrency,
+        rates: action.rates
+      };
+    default:
+      return state;
+  }
+};
+
+exports.default = reducer;
 
 /***/ })
 /******/ ]);
