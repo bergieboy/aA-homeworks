@@ -20334,7 +20334,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-  var store = (0, _redux.createStore)(_root_reducer2.default, preloadedState, applyMiddleware(addLoggingToDispatch, sillyMiddleware));
+  var store = (0, _redux.createStore)(_root_reducer2.default, preloadedState, (0, _redux.applyMiddleware)(addLoggingToDispatch, sillyMiddleware));
   store.subscribe(function () {
     localStorage.state = JSON.stringify(store.getState());
   });
